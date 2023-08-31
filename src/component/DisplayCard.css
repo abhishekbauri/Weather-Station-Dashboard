@@ -1,0 +1,39 @@
+.display_outer_card{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.display_data{
+    width: 40%;
+}
+.data{
+    width: 100%;
+    background: linear-gradient(to right, rgba(12, 12, 12, 0.8), rgba(237, 232, 232, 0.6));
+    border-radius: 30px;
+    padding: 0.5rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+.data:hover{
+    box-shadow: 2px 3px 5px white;
+}
+.data p {
+    font-size: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-transform: capitalize;
+}
+
+.data p span{
+    font-weight: bold;
+    font-style: italic;
+}
+
+@media only screen and (max-width: 600px){
+    .display_data{
+        width: 94%;
+        height: inherit;
+    }
+}

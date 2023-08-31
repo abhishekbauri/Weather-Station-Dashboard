@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import DisplayCard from "./component/DisplayCard";
+import InputField from "./component/InputField";
+import Navbar from "./component/Navbar";
 
 function App() {
+  const [weatherData, setWeatherData] = useState(null);
+
+  const key = process.env.REACT_APP_API_KEY;
+
+  const searchPlaceHandler = async (enteredPlace) => {
+    if(enteredPlace=== ''){
+      alert("Please enter your city name");
+      return;
+    }
+    try {
+      const res = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${enteredPlace}&units=metric&appid=${key}`
+      );
+
+      if (!res.ok)
+        throw new Error(
+          `Something went wrong! Please enter your city name correctly. ${enteredPlace} city not found!`
+        );
+
+      const data = await res.json();
+      setWeatherData(data);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <InputField onSearchPlace={searchPlaceHandler} />
+      {weatherData && <DisplayCard {...weatherData} />}
     </div>
   );
 }
