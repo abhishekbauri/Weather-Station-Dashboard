@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Create a .env file in main directory and add the below code in that file.
 
-### `REACT_APP_API_KEY = {YOUR API KEY}`
+### `REACT_APP_API_KEY` = {YOUR API KEY}
 
 Note: You can create your Api Key from [openweathermap](https://openweathermap.org/api)
 
@@ -31,5 +31,4 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
 
